@@ -1,0 +1,22 @@
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #1f1f1f;
+  padding: 1rem;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a.active {
+  color: #00bfff;
+  text-decoration: underline;
+}
+
+a.logout {
+  color: #ff4d4d;
+}
