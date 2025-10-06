@@ -1,10 +1,15 @@
-<p>menu works!</p>
-<nav class="menu">
-  <a routerLink="/main/populares" routerLinkActive="active">Populares</a>
-  <a routerLink="/main/descargados" routerLinkActive="active">Descargados</a>
-  <a routerLink="/main/proximamente" routerLinkActive="active">Próximamente</a>
-  <a routerLink="/main/agregar" routerLinkActive="active">Agregar</a>
-  <a routerLink="/" class="logout">Salir</a>
-</nav>
+<header class="navbar">
+  <h1 class="title">🎮 Venta de Videojuegos</h1>
 
-<router-outlet></router-outlet>
+  <nav class="nav-links">
+    <a routerLink="/main/popular" routerLinkActive="active">Populares</a>
+    <a routerLink="/main/downloads" routerLinkActive="active">Descargados</a>
+    <a routerLink="/main/coming-soon" routerLinkActive="active">Próximamente</a>
+    <a routerLink="/main/add-game" routerLinkActive="active">Agregar</a>
+    <button class="logout" (click)="logout()">Salir</button>
+  </nav>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>

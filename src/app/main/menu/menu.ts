@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,4 +14,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './menu.html',
   styleUrls: ['./menu.scss'],
 })
-export class Menu {}
+export class Menu {
+  constructor(private router: Router) {}
+
+  logout() {
+    
+    this.router.navigate(['/login']);
+  }
+}
