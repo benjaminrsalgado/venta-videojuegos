@@ -18,13 +18,15 @@
       required
     />
 
-    <button type="submit">Ingresar</button>
+    <button type="submit" class="login-btn">Ingresar</button>
   </form>
 
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
-  <p class="register-link">
-    ¿No tienes cuenta?
-    <a routerLink="/register">Regístrate aquí</a>
-  </p>
+  <div class="register-section">
+    <p>¿No tienes cuenta?</p>
+    <button class="register-btn" [routerLink]="['/register']">
+  Registrar usuario
+</button>
+  </div>
 </div>
