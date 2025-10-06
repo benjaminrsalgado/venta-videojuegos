@@ -11,25 +11,31 @@ export interface User {
   providedIn: 'root',
 })
 export class UsersService {
-  private users: User[] = [
-    {
-      id: 1,
-      username: 'admin',
-      password: '1234',
-      email: 'admin@example.com',
-    },
-  ];
-
+  private users: User[] = [];
   private currentUser: User | null = null;
 
-  constructor() {}
+  constructor() {
+    const storedUsers = localStorage.getItem('users');
+    if (storedUsers) this.users = JSON.parse(storedUsers);
 
-  
+    const storedSession = localStorage.getItem('currentUser');
+    if (storedSession) this.currentUser = JSON.parse(storedSession);
+  }
+
+  private saveUsers() {
+    localStorage.setItem('users', JSON.stringify(this.users));
+  }
+
+  private saveSession() {
+    if (this.currentUser)
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    else localStorage.removeItem('currentUser');
+  }
+
   getCurrentUser(): User | null {
     return this.currentUser;
   }
 
-  
   login(username: string, password: string): boolean {
     const foundUser = this.users.find(
       (u) => u.username === username && u.password === password
@@ -37,17 +43,17 @@ export class UsersService {
 
     if (foundUser) {
       this.currentUser = foundUser;
+      this.saveSession();
       return true;
     }
     return false;
   }
 
-  /** Cierra sesión */
   logout() {
     this.currentUser = null;
+    this.saveSession();
   }
 
-  /** Registra un nuevo usuario si no existe uno con el mismo username o email */
   register(username: string, password: string, email: string): boolean {
     const userExists = this.users.some(
       (u) => u.username === username || u.email === email
@@ -63,10 +69,10 @@ export class UsersService {
     };
 
     this.users.push(newUser);
+    this.saveUsers();
     return true;
   }
 
-  /** Devuelve todos los usuarios (solo para depuración) */
   getAllUsers(): User[] {
     return this.users;
   }
