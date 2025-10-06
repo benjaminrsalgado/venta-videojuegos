@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GamesService, Game } from '../../services/games';
 
 @Component({
   selector: 'app-downloads',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './downloads.html',
-  styleUrl: './downloads.scss'
+  styleUrls: ['./downloads.scss'],
 })
 export class Downloads {
+  games: Game[] = [];
 
+  constructor(private gamesService: GamesService) {}
+
+  ngOnInit() {
+    this.games = this.gamesService.getDownloadedGames();
+  }
 }
+

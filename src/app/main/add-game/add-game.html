@@ -1,1 +1,74 @@
-<p>add-game works!</p>
+<h2>🕹️ Agregar Nuevo Videojuego</h2>
+
+<form (ngSubmit)="onSubmit()" #gameForm="ngForm" class="form">
+  <label>
+    Título:
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="title"
+      placeholder="Ej. GTA 6"
+      required
+    />
+  </label>
+
+  <label>
+    Descripción:
+    <textarea
+      name="description"
+      [(ngModel)]="description"
+      placeholder="Breve descripción del juego"
+      required
+    ></textarea>
+  </label>
+
+  <label>
+    Fecha de lanzamiento:
+    <input type="date" name="releaseDate" [(ngModel)]="releaseDate" required />
+  </label>
+
+  <label>
+    Imagen (URL opcional):
+    <input
+      type="text"
+      name="image"
+      [(ngModel)]="image"
+      placeholder="https://..."
+    />
+  </label>
+
+  <div class="inline-fields">
+    <label>
+      Calificación (1-5):
+      <input
+        type="number"
+        name="rating"
+        [(ngModel)]="rating"
+        min="1"
+        max="5"
+        required
+      />
+    </label>
+
+    <label>
+      Descargas:
+      <input
+        type="number"
+        name="downloads"
+        [(ngModel)]="downloads"
+        min="0"
+        required
+      />
+    </label>
+  </div>
+
+  <label class="checkbox">
+    <input type="checkbox" [(ngModel)]="comingSoon" name="comingSoon" />
+    Marcar como “Próximamente”
+  </label>
+
+  <button type="submit">Agregar Juego</button>
+</form>
+
+<p class="success" *ngIf="message">{{ message }}</p>
+<p class="success" *ngIf="message">{{ message }}</p>

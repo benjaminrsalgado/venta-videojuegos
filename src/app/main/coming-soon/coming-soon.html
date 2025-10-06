@@ -1,1 +1,10 @@
-<p>coming-soon works!</p>
+<h2>🕒 Próximamente</h2>
+
+<div class="cards">
+  <div class="card" *ngFor="let game of games">
+    <img [src]="game.image" [alt]="game.title" />
+    <h3>{{ game.title }}</h3>
+    <p>{{ game.description }}</p>
+    <small>Fecha de lanzamiento: {{ game.releaseDate }}</small>
+  </div>
+</div>
