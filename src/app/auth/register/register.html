@@ -34,14 +34,16 @@
       required
     />
 
-    <button type="submit">Registrarse</button>
+    <button type="submit" class="register-btn">Registrarse</button>
   </form>
 
   <p class="success" *ngIf="message">{{ message }}</p>
   <p class="error" *ngIf="error">{{ error }}</p>
 
-  <p class="login-link">
-    ¿Ya tienes cuenta?
-    <a routerLink="/login">Inicia sesión</a>
-  </p>
+  <div class="login-section">
+    <p>¿Ya tienes cuenta?</p>
+    <button class="login-btn" routerLink="/login">
+      Volver a Iniciar Sesión
+    </button>
+  </div>
 </div>
