@@ -1,10 +1,29 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class MainRoutingModule { }
+export const routes: Routes = [
+  {
+    path: 'popular',
+    loadComponent: () =>
+      import('./popular/popular').then((m) => m.Popular),
+  },
+  {
+    path: 'downloads',
+    loadComponent: () =>
+      import('./downloads/downloads').then((m) => m.Downloads),
+  },
+  {
+    path: 'coming-soon',
+    loadComponent: () =>
+      import('./coming-soon/coming-soon').then((m) => m.ComingSoon),
+  },
+  {
+    path: 'add-game',
+    loadComponent: () =>
+      import('./add-game/add-game').then((m) => m.AddGame),
+  },
+  {
+    path: '',
+    redirectTo: 'popular',
+    pathMatch: 'full',
+  },
+];
