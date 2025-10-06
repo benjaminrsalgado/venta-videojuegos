@@ -1,1 +1,10 @@
-<p>popular works!</p>
+<h2>🎯 Juegos Populares</h2>
+
+<div class="cards">
+  <div class="card" *ngFor="let game of games">
+    <img [src]="game.image" [alt]="game.title" />
+    <h3>{{ game.title }}</h3>
+    <p>{{ game.description }}</p>
+    <small>⭐ {{ game.rating }} — {{ game.downloads }} descargas</small>
+  </div>
+</div>
